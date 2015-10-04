@@ -1,0 +1,173 @@
+<html>
+<head>
+
+<style>
+	html,body{
+		margin: 0px;
+		background-color: black;
+		height: 100%;
+		min-height: 100%;
+		overflow: hidden;
+	}
+	.nav{
+		position: fixed;
+		display: block;
+		bottom: 10px;
+		color: white;
+	}
+	#container{
+		width: 100%;
+		height: 100%;
+	}
+	.slide{
+		width: 100%;
+		height: 100%;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		background-color: black;
+		background-size: contain;
+		position: absolute;
+	}
+</style>
+
+<script>
+	//var animate;
+	var bw;
+	var count = 0;
+	var count1 = 0;
+	var count2 = 0;
+	var count3 = 0;
+	var img_L_1 = null;
+	var img_L_2 = null;
+
+
+	var moveLeft_0 = function(){
+		count1 ++;
+		img_L_1.style.left = parseInt(img_L_1.style.left) - 2 + 'px';
+		stop1();
+		var animate1 = setTimeout(moveLeft_0,1);
+				
+	}
+	
+	
+	var moveLeft_1 = function(){
+		count ++;
+		img_L_2.style.left = parseInt(img_L_2.style.left) - 2 + 'px';
+		stop1();
+		var animate2 = setTimeout(moveLeft_1,1);	
+		
+		
+	}
+	var stop1 = function(){
+		if(count == bw/2){
+			clearTimeout(animate2);
+			//alert("wo");
+		}
+		if(count1 == bw/2){
+			clearTimeout(animate1);
+			//document.getElementById("slide" + slideShow.currentSlide).style.left = bw + 'px';
+			img_L_1.style.display = "none";
+		}
+	}
+	var moveRight_0 = function(){
+		count2 ++;
+		img_L_1.style.left = parseInt(img_L_1.style.left) + 2 + 'px';
+		stop2();
+		var animate3 = setTimeout(moveRight_0,1);	
+	}
+	
+	
+	var moveRight_1 = function(){
+		count3 ++;
+		img_L_2.style.left = parseInt(img_L_2.style.left) + 2 + 'px';
+		stop2();
+		var animate4 = setTimeout(moveRight_1,1);	
+		
+	}
+	var stop2 = function(){
+		if(count2 == bw/2){
+			clearTimeout(animate3);
+			//alert("wo");
+		}
+		if(count3 == bw/2){
+			clearTimeout(animate4);
+		}
+	}
+	
+	
+	var slideShow = {
+		initialize:function(obj,type,initSlide){ 
+			
+			slideShow.obj = obj;
+			var outS = "";
+			for (var i = 0; i < obj.length; i++){
+				outS = outS + "<div style='background-image:url(" + obj[i]+  ")' class='slide' id='slide" + i + "'> </div>";
+			}
+			document.getElementById("container").innerHTML = outS;
+			
+			document.getElementById("slide0").style.display = "block";
+			document.getElementById("slide1").style.display = "none";
+			document.getElementById("slide2").style.display = "none";
+			document.getElementById("slide3").style.display = "none";
+			
+		},
+		goPrev:function(){
+			count2 = 0;
+			count3 = 0;
+			bw = document.body.clientWidth;
+			document.getElementById("slide" + slideShow.currentSlide).style.left = '0px';
+			img_L_1 = document.getElementById("slide" + slideShow.currentSlide);
+			var pre = slideShow.currentSlide - 1;
+			if(pre < 0){
+				pre = 3;
+			}
+			document.getElementById("slide" + pre).style.left = "-" + bw + 'px';
+			img_L_2 = document.getElementById("slide" + pre);
+			img_L_2.style.display = "block";
+			
+			moveRight_0();
+
+			moveRight_1();
+			slideShow.currentSlide = pre;
+		},
+		goNext:function(){	
+			count = 0;
+			count1 = 0;
+			bw = document.body.clientWidth;
+			document.getElementById("slide" + slideShow.currentSlide).style.left = '0px';
+			img_L_1 = document.getElementById("slide" + slideShow.currentSlide);
+			var next = slideShow.currentSlide + 1;
+			if(next > 3){
+				next = 0;
+			}
+			document.getElementById("slide" + next).style.left = bw + 'px';
+			img_L_2 = document.getElementById("slide" + next);
+			img_L_2.style.display = "block";
+			
+			moveLeft_0();
+
+			moveLeft_1();
+			slideShow.currentSlide = next;	
+		},
+		currentSlide:0,
+		obj:null
+	}
+  var startUp = function(){
+    var obj = [
+      "http://www.jssor.com/img/alila/01.jpg",
+      "https://tpc.googlesyndication.com/simgad/11787196096958431435",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/PipreolaWhitelyiKeulemans.jpg/179px-PipreolaWhitelyiKeulemans.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Egretta_thula_at_Las_Gallinas_Wildlife_Ponds.jpg/231px-Egretta_thula_at_Las_Gallinas_Wildlife_Ponds.jpg"
+      ]
+    slideShow.initialize(obj, "fade", 0);
+  }
+</script>
+</head>
+
+<body onload="startUp()">
+	<div id='container'> </div>
+	<a style='left:10px' class='nav' href='javascript:slideShow.goPrev()'> Prev </a>
+	<a style='right:10px' class='nav' href='javascript:slideShow.goNext()'> Next </a>
+  
+</body>
+</html>
