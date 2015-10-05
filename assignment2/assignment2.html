@@ -110,7 +110,9 @@
 	}
 	var preFade1 = function(){
 		count5 ++;
-		img_F_2.style.opacity = img_F_2.style.opacity + 0.05;
+		img_F_2.style.opacity = count5 * .05;//img_F_2.style.opacity + 0.05;
+		console.log(img_F_2.style.opacity);
+		console.log(count5);
 		if(count5 < 20){setTimeout(preFade1, 100);}
 	}
 	
