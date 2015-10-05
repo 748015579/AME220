@@ -37,27 +37,35 @@
 	var count1 = 0;
 	var count2 = 0;
 	var count3 = 0;
+	var count4 = 0;
+	var count5 = 0;
 	var img_L_1 = null;
 	var img_L_2 = null;
+	var img_F_1 = null;
+	var img_F_2 = null;
+	var img_F_3 = null;
 
 
 	var moveLeft_0 = function(){
 		count1 ++;
-		img_L_1.style.left = parseInt(img_L_1.style.left) - 2 + 'px';
-		stop1();
-		var animate1 = setTimeout(moveLeft_0,1);
-				
+		img_L_1.style.left = parseInt(img_L_1.style.left) - 10 + 'px';
+		if(count1 <= bw/10){   var animate1 = setTimeout(moveLeft_0, 0.01);  }
+		//stop1();
+		//var animate1 = setTimeout(moveLeft_0,1);
+		//document.getElementById("slide" + slideShow.currentSlide).style.left = bw + 'px';		
 	}
-	
 	
 	var moveLeft_1 = function(){
 		count ++;
-		img_L_2.style.left = parseInt(img_L_2.style.left) - 2 + 'px';
-		stop1();
-		var animate2 = setTimeout(moveLeft_1,1);	
+		img_L_2.style.left = parseInt(img_L_2.style.left) - 10 + 'px';
+		//stop1();
+		//var animate2 = setTimeout(moveLeft_1,1);	
+		if(count <= bw/10){   var animate2 = setTimeout(moveLeft_1, 0.01);  }
+		
 		
 		
 	}
+	/*
 	var stop1 = function(){
 		if(count == bw/2){
 			clearTimeout(animate2);
@@ -65,25 +73,27 @@
 		}
 		if(count1 == bw/2){
 			clearTimeout(animate1);
-			//document.getElementById("slide" + slideShow.currentSlide).style.left = bw + 'px';
+			
 			img_L_1.style.display = "none";
 		}
-	}
+	}*/
 	var moveRight_0 = function(){
 		count2 ++;
-		img_L_1.style.left = parseInt(img_L_1.style.left) + 2 + 'px';
-		stop2();
-		var animate3 = setTimeout(moveRight_0,1);	
+		img_L_1.style.left = parseInt(img_L_1.style.left) + 10 + 'px';
+		//stop2();
+		//var animate3 = setTimeout(moveRight_0,1);	
+		if(count2 <= bw/10){   var animate3 = setTimeout(moveRight_0, 0.01);  }
 	}
-	
 	
 	var moveRight_1 = function(){
 		count3 ++;
-		img_L_2.style.left = parseInt(img_L_2.style.left) + 2 + 'px';
-		stop2();
-		var animate4 = setTimeout(moveRight_1,1);	
+		img_L_2.style.left = parseInt(img_L_2.style.left) + 10 + 'px';
+		//stop2();
+		//var animate4 = setTimeout(moveRight_1,1);	
+		if(count3 <= bw/10){   var animate3 = setTimeout(moveRight_1, 0.01);  }
 		
 	}
+	/*
 	var stop2 = function(){
 		if(count2 == bw/2){
 			clearTimeout(animate3);
@@ -92,65 +102,139 @@
 		if(count3 == bw/2){
 			clearTimeout(animate4);
 		}
+	}*/
+	var preFadeOut = function(){
+		count4 ++;
+		img_F_1.style.opacity -= 0.05;
+		if(count4 < 20){setTimeout(preFadeOut, 100);}
+	}
+	var preFade1 = function(){
+		count5 ++;
+		img_F_2.style.opacity = img_F_2.style.opacity + 0.05;
+		if(count5 < 20){setTimeout(preFade1, 1000);}
 	}
 	
 	
 	var slideShow = {
 		initialize:function(obj,type,initSlide){ 
-			
+			slideShow.currentSlide = initSlide;
+			slideShow.type = type;
 			slideShow.obj = obj;
 			var outS = "";
 			for (var i = 0; i < obj.length; i++){
 				outS = outS + "<div style='background-image:url(" + obj[i]+  ")' class='slide' id='slide" + i + "'> </div>";
 			}
 			document.getElementById("container").innerHTML = outS;
+			if(type == "swipe"){
+				document.getElementById("slide0").style.display = "block";
+				document.getElementById("slide1").style.display = "none";
+				document.getElementById("slide2").style.display = "none";
+				document.getElementById("slide3").style.display = "none";
+			}
+			if(type == "fade"){
+				document.getElementById("slide0").style.opacity = 1;
+				document.getElementById("slide1").style.opacity = 0;
+				document.getElementById("slide2").style.opacity = 0;
+				document.getElementById("slide3").style.opacity = 0;
+			}
 			
-			document.getElementById("slide0").style.display = "block";
-			document.getElementById("slide1").style.display = "none";
-			document.getElementById("slide2").style.display = "none";
-			document.getElementById("slide3").style.display = "none";
 			
 		},
 		goPrev:function(){
-			count2 = 0;
-			count3 = 0;
-			bw = document.body.clientWidth;
-			document.getElementById("slide" + slideShow.currentSlide).style.left = '0px';
-			img_L_1 = document.getElementById("slide" + slideShow.currentSlide);
-			var pre = slideShow.currentSlide - 1;
-			if(pre < 0){
-				pre = 3;
-			}
-			document.getElementById("slide" + pre).style.left = "-" + bw + 'px';
-			img_L_2 = document.getElementById("slide" + pre);
-			img_L_2.style.display = "block";
-			
-			moveRight_0();
+			if(slideShow.type == "swipe"){
+				count2 = 0;
+				count3 = 0;
+				bw = document.body.clientWidth;
+				var next1 = slideShow.currentSlide + 1;
+				if(next1 > 3){
+					next1 = 0;
+				}
+				document.getElementById("slide" + next1).style.left = bw + 'px';
+				document.getElementById("slide" + slideShow.currentSlide).style.left = '0px';
+				img_L_1 = document.getElementById("slide" + slideShow.currentSlide);
+				var pre = slideShow.currentSlide - 1;
+				if(pre < 0){
+					pre = 3;
+				}
+				document.getElementById("slide" + pre).style.left = "-" + bw + 'px';
+				img_L_2 = document.getElementById("slide" + pre);
+				img_L_2.style.display = "block";
+				
+				moveRight_0();
 
-			moveRight_1();
-			slideShow.currentSlide = pre;
+				moveRight_1();
+				slideShow.currentSlide = pre;
+			}
+			if(slideShow.type == "fade"){
+				var next1 = slideShow.currentSlide + 1;
+				if(next1 > 3){
+					next1 = 0;
+				}
+				document.getElementById("slide" + next1).style.opacity = 0;
+				count4 =0;
+				var pre = slideShow.currentSlide - 1;
+				if(pre < 0){
+					pre = 3;
+				}
+				document.getElementById("slide" + slideShow.currentSlide).style.opacity = 1;
+				img_F_1 = document.getElementById("slide" + slideShow.currentSlide);
+				document.getElementById("slide" + pre).style.opacity = 1;
+				img_F_2 = document.getElementById("slide" + pre);
+				preFadeOut();
+				
+				slideShow.currentSlide = pre;
+			}
+			
 		},
 		goNext:function(){	
-			count = 0;
-			count1 = 0;
-			bw = document.body.clientWidth;
-			document.getElementById("slide" + slideShow.currentSlide).style.left = '0px';
-			img_L_1 = document.getElementById("slide" + slideShow.currentSlide);
-			var next = slideShow.currentSlide + 1;
-			if(next > 3){
-				next = 0;
-			}
-			document.getElementById("slide" + next).style.left = bw + 'px';
-			img_L_2 = document.getElementById("slide" + next);
-			img_L_2.style.display = "block";
+			if(slideShow.type == "swipe"){
+				count = 0;
+				count1 = 0;
+				bw = document.body.clientWidth;
+				var prev = slideShow.currentSlide - 1;
+				if(prev < 0){
+					prev = 3;
+				}
+				document.getElementById("slide" + prev).style.left = bw + 'px';
+				document.getElementById("slide" + slideShow.currentSlide).style.left = '0px';
+				img_L_1 = document.getElementById("slide" + slideShow.currentSlide);
+				var next = slideShow.currentSlide + 1;
+				if(next > 3){
+					next = 0;
+				}
+				document.getElementById("slide" + next).style.left = bw + 'px';
+				img_L_2 = document.getElementById("slide" + next);
+				img_L_2.style.display = "block";
 			
-			moveLeft_0();
+				moveLeft_0();
 
-			moveLeft_1();
-			slideShow.currentSlide = next;	
+				moveLeft_1();
+				slideShow.currentSlide = next;
+			}
+			if(slideShow.type == "fade"){
+				var prev = slideShow.currentSlide - 1;
+				if(prev < 0){
+					prev = 3;
+				}
+				document.getElementById("slide" + prev).style.opacity = 0;
+				count5 =0;
+				var next = slideShow.currentSlide + 1;
+				if(next > 3){
+					next = 0;
+				}
+				document.getElementById("slide" + slideShow.currentSlide).style.opacity = 1;
+				img_F_1 = document.getElementById("slide" + slideShow.currentSlide);
+				document.getElementById("slide" + next).style.opacity = 0;
+				img_F_2 = document.getElementById("slide" + next);
+				
+				preFade1();
+				
+				slideShow.currentSlide = next;
+			}				
 		},
 		currentSlide:0,
-		obj:null
+		obj:null,
+		type : "swipe"
 	}
   var startUp = function(){
     var obj = [
