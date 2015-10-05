@@ -174,15 +174,26 @@
 				}
 				document.getElementById("slide" + next1).style.opacity = 0;
 				count4 =0;
+				count5 =0;
 				var pre = slideShow.currentSlide - 1;
 				if(pre < 0){
 					pre = 3;
 				}
-				document.getElementById("slide" + slideShow.currentSlide).style.opacity = 1;
-				img_F_1 = document.getElementById("slide" + slideShow.currentSlide);
-				document.getElementById("slide" + pre).style.opacity = 1;
-				img_F_2 = document.getElementById("slide" + pre);
-				preFadeOut();
+				if(slideShow.currentSlide != 0){
+					document.getElementById("slide" + slideShow.currentSlide).style.opacity = 1;
+					img_F_1 = document.getElementById("slide" + slideShow.currentSlide);
+					document.getElementById("slide" + pre).style.opacity = 1;
+					img_F_2 = document.getElementById("slide" + pre);
+					preFadeOut();
+				}else{
+					document.getElementById("slide" + slideShow.currentSlide).style.opacity = 1;
+					img_F_1 = document.getElementById("slide" + slideShow.currentSlide);
+					document.getElementById("slide" + pre).style.opacity = 0;
+					img_F_2 = document.getElementById("slide" + pre);
+					preFadeOut();
+					preFade1();
+				}
+				
 				
 				slideShow.currentSlide = pre;
 			}
@@ -220,16 +231,27 @@
 				}
 				document.getElementById("slide" + prev).style.opacity = 0;
 				count5 =0;
+				count4 = 0;
 				var next = slideShow.currentSlide + 1;
 				if(next > 3){
 					next = 0;
 				}
-				document.getElementById("slide" + slideShow.currentSlide).style.opacity = 1;
-				img_F_1 = document.getElementById("slide" + slideShow.currentSlide);
-				document.getElementById("slide" + next).style.opacity = 0;
-				img_F_2 = document.getElementById("slide" + next);
+				if(slideShow.currentSlide != 3){
+					document.getElementById("slide" + slideShow.currentSlide).style.opacity = 1;
+					img_F_1 = document.getElementById("slide" + slideShow.currentSlide);
+					document.getElementById("slide" + next).style.opacity = 0;
+					img_F_2 = document.getElementById("slide" + next);
 				
-				preFade1();
+					preFade1();
+				}else{
+					document.getElementById("slide" + slideShow.currentSlide).style.opacity = 1;
+					img_F_1 = document.getElementById("slide" + slideShow.currentSlide);
+					document.getElementById("slide" + next).style.opacity = 1;
+					img_F_2 = document.getElementById("slide" + next);
+					preFadeOut();
+					preFade1();
+				}
+				
 				
 				slideShow.currentSlide = next;
 			}				
