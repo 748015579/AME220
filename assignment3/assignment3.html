@@ -1,0 +1,299 @@
+<html>
+<head>
+
+<title>Assignment3</title>
+
+<style>
+	button{
+		width : 130px;
+		height: 40px;
+		font-size: 20px;
+	}
+	div{
+		width : 100%;
+		text-align: center;
+	}
+	#top{
+		height: 60px;
+		padding-top: 20px;
+	}
+	#ios, #android{
+		height: 80px;
+		margin-top: 15px;
+	}
+	select{
+		width: 300px;
+		height: 45px;
+		font-size: 22px;
+	}
+	#imagePreview{
+		width: 252px;
+		height: 367px;
+		display: block;
+		text-align: center;
+		margin-left: 502.5px;
+	}
+	#imagePreview1{
+		width: 252px;
+		height: 367px;
+		display: block;
+		text-align: center;
+		margin-left: 502.5px;
+	}
+	#img_ios{
+		width: 148px;
+		height: 32px;
+		margin-right: -4px;
+	}
+	#img_android{
+		width: 149px;
+		height: 32px;
+		margin-left: -4px;
+		border: 0px;
+	}
+</style>
+
+<script src="jquery-1.11.3.js" type="text/javascript"></script>
+<script>
+	var status = "ios";
+	function startUp(){
+		if(status == "ios"){
+			document.getElementById('ios').style.display = "block";
+			document.getElementById('android').style.display = "none";
+			document.getElementById('imagePreview').style.display = "block";
+			document.getElementById('imagePreview1').style.display = "none";
+			
+		}
+	}
+	function changeImage() {
+		var image = document.getElementById('img_ios');
+		var image1 = document.getElementById('img_android');
+		if (image.src.match("img_ios")) {
+			status = "ios";
+			document.getElementById('ios').style.display = "block";
+			document.getElementById('android').style.display = "none";
+			document.getElementById('imagePreview').style.display = "block";
+			document.getElementById('imagePreview1').style.display = "none";
+			//console.log(status);
+		} else {
+			image.src = "ios_on.png";
+			image1.src = "android_off.png";
+			status = "ios";
+			document.getElementById('ios').style.display = "block";
+			document.getElementById('android').style.display = "none";
+			document.getElementById('imagePreview').style.display = "block";
+			document.getElementById('imagePreview1').style.display = "none";
+			//console.log(status);
+		}
+	}
+	function changeImage1() {
+		var image = document.getElementById('img_android');
+		var image1 = document.getElementById('img_ios');
+		if (image.src.match("android_on")) {
+			status = "android";
+			document.getElementById('ios').style.display = "none";
+			document.getElementById('android').style.display = "block";
+			document.getElementById('imagePreview').style.display = "none";
+			document.getElementById('imagePreview1').style.display = "block";
+			//console.log(status);
+		} else {
+			image.src = "android_on.png";
+			image1.src = "ios_off.png";
+			status = "android";
+			document.getElementById('ios').style.display = "none";
+			document.getElementById('android').style.display = "block";
+			document.getElementById('imagePreview').style.display = "none";
+			document.getElementById('imagePreview1').style.display = "block";
+			//console.log(status);
+		}
+	}
+
+	function imageUploaded(a,b)
+	{
+		var file = $('#uploadImage').get(0);
+		if(file.files[0].type.split("/")[0].toLowerCase() != "image"){
+			alert("Incorrect file type -- Please ensure you are uploading an image file.");
+		}
+		if ( file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
+			var FR = new FileReader();
+			FR.onload = function(e) {
+				var data = e.target.result;
+				var canvas = document.createElement("canvas");
+				var img = document.createElement("img");
+				img.onload= function(){
+					var MAX_WIDTH = a;
+					var MAX_HEIGHT = b;
+					var width = img.width;
+					var height = img.height;
+					var w2 = width;
+					var h2 = height;
+
+					if (width > height) {
+						if (width > MAX_WIDTH) {
+							h2 = height * MAX_WIDTH / width;
+							w2 = MAX_WIDTH;
+						}
+					} 
+					else 
+					{
+						if (height > MAX_HEIGHT) {
+							w2 = width * MAX_HEIGHT / height;
+							h2 = MAX_HEIGHT;
+						}
+					}
+					canvas.width = w2;
+					canvas.height = h2;
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(img, 0, 0, w2, h2);
+					var base64St = canvas.toDataURL("image/png");
+					document.getElementById("imagePreview").src = base64St;
+					//document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
+					//document.getElementById("imagePreview").style.width= MAX_WIDTH + "px";
+				}
+				img.src = data;
+			};  
+			FR.readAsDataURL( file.files[0] );
+		}
+	}
+	function imageUploaded1(a,b)
+	{
+		var file = $('#uploadImage1').get(0);
+		if(file.files[0].type.split("/")[0].toLowerCase() != "image"){
+			alert("Incorrect file type -- Please ensure you are uploading an image file.");
+		}
+		if ( file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
+			var FR = new FileReader();
+			FR.onload = function(e) {
+				var data = e.target.result;
+				var canvas = document.createElement("canvas");
+				var img = document.createElement("img");
+				img.onload= function(){
+					var MAX_WIDTH = a;
+					var MAX_HEIGHT = b;
+					var width = img.width;
+					var height = img.height;
+					var w2 = width;
+					var h2 = height;
+
+					if (width > height) {
+						if (width > MAX_WIDTH) {
+							h2 = height * MAX_WIDTH / width;
+							w2 = MAX_WIDTH;
+						}
+					} 
+					else 
+					{
+						if (height > MAX_HEIGHT) {
+							w2 = width * MAX_HEIGHT / height;
+							h2 = MAX_HEIGHT;
+						}
+					}
+					canvas.width = w2;
+					canvas.height = h2;
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(img, 0, 0, w2, h2);
+					var base64St = canvas.toDataURL("image/png");
+					document.getElementById("imagePreview1").src = base64St;
+					//document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
+					//document.getElementById("imagePreview").style.width= MAX_WIDTH + "px";
+				}
+				img.src = data;
+			};  
+			FR.readAsDataURL( file.files[0] );
+		}
+	}
+	function changeImg()
+	{
+		var x = document.getElementById("mySelect").value;
+		switch (x){
+			case "Icon":
+				imageUploaded(57,57);
+				break;
+			case "Icon2x":
+				imageUploaded(114,114);
+				break;
+			case "Icon_72":
+				imageUploaded(72,72);
+				break;
+			case "Icon_722x":
+				imageUploaded(144,144);
+				break;
+			case "Icon_small":
+				imageUploaded(29,29);
+				break;
+			case "Icon_small2x":
+				imageUploaded(58,58);
+				break;
+			case "Icon_small_50":
+				imageUploaded(50,50);
+				break;
+			case "Icon_small_502x":
+				imageUploaded(100,100);
+				break;
+		}
+	}
+	function changeImg1()
+	{
+		var x = document.getElementById("mySelect1").value;
+		switch (x){
+			case "Launcher_icons_48":
+				imageUploaded1(48,48);
+				break;
+			case "Launcher_icons_72":
+				imageUploaded1(72,72);
+				break;
+			case "Launcher_icons_96":
+				imageUploaded1(96,96);
+				break;
+			case "Launcher_icons_144":
+				imageUploaded1(144,144);
+				break;
+			case "Launcher_icons_192":
+				imageUploaded1(192,192);
+				break;
+			case "Launcher_icons_512":
+				imageUploaded1(512,512);
+				break;
+		}
+	}
+	
+</script>
+</head>
+
+<body onload="startUp()">
+	<div id = "top">
+		<img id = "img_ios" src = "ios_on.png" onclick = "changeImage()">
+		<img id = "img_android" src = "android_off.png" onclick = "changeImage1()">
+	</div>
+	<div id = "ios">
+		<select id = "mySelect" onchange="changeImg()">
+			<option value="Icon">Icon.png</option>
+			<option value="Icon2x">Icon@2x.png</option>
+			<option value="Icon_72" selected = "selected">Icon-72.png</option>
+			<option value="Icon_722x">Icon-72@2x.png</option>
+			<option value="Icon_small">Icon-small.png</option>
+			<option value="Icon_small2x">Icon-small@2x.png</option>
+			<option value="Icon_small_50">Icon-small-50.png</option>
+			<option value="Icon_small_502x">Icon-small-50@2x.png</option>
+		</select>
+		<input type="file" name="uploadImage" id="uploadImage" onchange="imageUploaded(72,72)">
+	</div>
+	<div id = "android">
+		<select id = "mySelect1" onchange = "changeImg1()">
+			<option value="Launcher_icons_48">Launcher_icons-48.png</option>
+			<option value="Launcher_icons_72" selected = "selected">Launcher_icons-72.png</option>
+			<option value="Launcher_icons_96">Launcher_icons-96.png</option>
+			<option value="Launcher_icons_144">Launcher_icons-144.png</option>
+			<option value="Launcher_icons_192">Launcher_icons-192.png</option>
+			<option value="Launcher_icons_512">Launcher_icons-512.png</option>
+		</select>
+		<input type="file" name="uploadImage1" id="uploadImage1" onchange="imageUploaded1(72,72)">
+	</div>
+	<div>
+		<img id="imagePreview">
+		<img id = "imagePreview1">
+	</div>
+	
+</body>
+
+</html>
