@@ -1,0 +1,528 @@
+<html>
+<head>
+<style>
+	#addNew{
+		display: none;
+		position: fixed;
+		top: 0px;
+		margin-top: 1000px;
+		height: 100%;
+		width: 100%;
+		background: rgba(0,0,0,0.7);
+		transition: 1s;
+		
+	}
+	#clockWrapper{
+		width: 300px;
+		margin: auto;
+		margin-bottom: 5px;
+		height: 300px;
+		border: 1px solid black;
+		border-radius: 150px;
+		background-color: white;
+		transition: 3s;
+	}
+	.nums{
+		position: absolute;
+		top: 150px;
+		width: 290px;
+		text-align: right;
+		
+	}
+	.nums1{
+		position: absolute;
+		margin-top: 140px;
+		width: 290px;
+		text-align: right;
+	}
+	#n1{
+		transform: rotate(-60deg);
+	}
+	#n2{
+		transform: rotate(-30deg);
+	}
+	#n3{
+		transform: rotate(0deg);
+	}
+	#n4{
+		transform: rotate(30deg);
+	}
+	#n5{
+		transform: rotate(60deg);
+	}
+	#n6{
+		transform: rotate(90deg);
+	}
+	#n7{
+		transform: rotate(120deg);
+	}
+	#n8{
+		transform: rotate(150deg);
+	}
+	#n9{
+		transform: rotate(180deg);
+	}
+	#n10{
+		transform: rotate(-150deg);
+	}
+	#n11{
+		transform: rotate(-120deg);
+	}
+	#n12{
+		transform: rotate(-90deg);
+	}
+	#needle
+	{
+		margin-top: 150px;
+		position: absolute;
+		width: 300px;
+		line-height: 0px;
+		
+	}
+	#needle span{
+		display: block;
+		margin-left: 150px;
+		width: auto;
+		text-align: left;
+	}
+	.hour span{
+		background-color: red;
+		max-width: 100px;
+		height: 2px;
+	}
+	.min span{
+		background-color: blue;
+		max-width: 120px;
+		height: 2px;
+	}
+	.secs span{
+		background-color: purple;
+		max-width: 135px;
+		height: 1px;
+	}
+	.zone1, .zone2, .zone3, .zone4, .zone5, .zone6, .zone7, .zone8, .zone9, .zone10, .zone11, .zone12, .zone13, .zone14, .zone15, .zone16, .zone17, .zone18, .zone19, .zone20, .zone21, .zone22, .zone23, .zone24{
+		display: none;
+	}
+	
+</style>
+
+<script src="jquery-1.11.3.js"></script>
+<script>
+	var Time = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "23", "22", "21", "20"];
+	
+	function startUp(){
+		generateClock();
+		generateMyTimeZoneList();
+		setInterval("updateClock()", 1000);
+	}
+	function generateClock(){
+		var clock = "";
+		for(var b = 1; b < 25; b++){
+			var a = 30 *b;
+			clock += "<div id = 'clockWrapper' class = 'zone"+b+"'>"
+			+"<div class = 'nums1' id = 'n1'>-</div>"
+			+"<div class = 'nums1' id = 'n2'>-</div>"
+			+"<div class = 'nums1' id = 'n3'>=</div>"
+			+"<div class = 'nums1' id = 'n4'>-</div>"
+			+"<div class = 'nums1' id = 'n5'>-</div>"
+			+"<div class = 'nums1' id = 'n6'>=</div>"
+			+"<div class = 'nums1' id = 'n7'>-</div>"
+			+"<div class = 'nums1' id = 'n8'>-</div>"
+			+"<div class = 'nums1' id = 'n9'>=</div>"
+			+"<div class = 'nums1' id = 'n10'>-</div>"
+			+"<div class = 'nums1' id = 'n11'>-</div>"
+			+"<div class = 'nums1' id = 'n12'>=</div>"
+		
+			+"<div id = 'needle' class = 'hour'><span></span></div>"
+			+"<div id = 'needle' class = 'min'><span></span></div>"
+			+"<div id = 'needle' class = 'secs'><span></span></div>"
+		
+			+"</div>";
+		}
+		
+		document.getElementById("newClock").innerHTML = clock;
+	
+	}
+	function ChangeBackgroundColor(){
+		var a = document.getElementsByName("backgroung_color");
+		for(var c = 0; c < a.length; c++){
+			if(a[c].checked == true){
+				console.log(a[c].value);
+				$("#clockWrapper").css("background-color", a[c].value);
+				break;	
+			}
+		}
+		
+	}
+	var i = 0;
+	
+	function cancelTimeZone(){
+		$("#addNew").css("margin-top", "1000px");
+		$("#addNew").fadeOut();
+	}
+	function updateClock(){
+		var date = new Date();
+		var h = date.getHours()% 12;
+		var m = date.getMinutes();
+		var s = date.getSeconds();
+		
+		var hdeg = (h -3) * 30 + 30 * i ;
+		
+		var mdeg = (m -15) * 6;
+		console.log(mdeg);
+		var sdeg = (s -15) * 6;
+		var h = document.getElementsByClassName("hour");
+		var m = document.getElementsByClassName("min");
+		var s = document.getElementsByClassName("secs");
+		//h[0].style.transform = "rotate(" + hdeg + "deg)";
+		//m[0].style.transform = "rotate(" + mdeg + "deg)";
+		//s[0].style.transform = "rotate(" + sdeg + "deg)";
+		for(var j = 0; j < h.length; j ++){
+			var d = 30 * j + hdeg;
+			h[j].style.transform = "rotate(" + d + "deg)";
+			m[j].style.transform = "rotate(" + mdeg + "deg)";
+			s[j].style.transform = "rotate(" + sdeg + "deg)";
+		}
+		
+	}
+	function changeTime(){
+		var x = document.getElementById("timeZone").value;
+		switch (x){
+			case "-7:00":
+				i = 0;
+				updateClock();
+				break;
+			case "-6:00":
+				i = 1;
+				updateClock();
+				break;
+			case "-5:00":
+				i = 2;
+				updateClock();
+				break;
+			case "-4:00":
+				i = 3;
+				updateClock();
+				break;
+			case "-3:00":
+				i = 4;
+				updateClock();
+				break;
+			case "-2:00":
+				i = 5;
+				updateClock();
+				break;
+			case "-1:00":
+				i = 6;
+				updateClock();
+				break;
+			case "0:00":
+				i = 7;
+				updateClock();
+				break;
+			case "+1:00":
+				i = 8;
+				updateClock();
+				break;
+			case "+2:00":
+				i = 9;
+				updateClock();
+				break;
+			case "+3:00":
+				i = 10;
+				updateClock();
+				break;
+			case "+4:00":
+				i = 11;
+				updateClock();
+				break;
+			case "+5:00":
+				i = 12;
+				updateClock();
+				break;
+			case "+6:00":
+				i = 13;
+				updateClock();
+				break;
+			case "+7:00":
+				i = 14;
+				updateClock();
+				break;
+			case "+8:00":
+				i = 15;
+				updateClock();
+				break;
+			case "+9:00":
+				i = 16;
+				updateClock();
+				break;
+			case "+10:00":
+				i = 17;
+				updateClock();
+				break;
+			case "+11:00":
+				i = 18;
+				updateClock();
+				break;
+			case "+12:00":
+				i = 19;
+				updateClock();
+				break;
+			case "-8:00":
+				i = 23;
+				updateClock();
+				break;
+			case "-9:00":
+				i = 22;
+				updateClock();
+				break;
+			case "-10:00":
+				i = 21;
+				updateClock();
+				break;
+			case "-11:00":
+				i = 20;
+				updateClock();
+				break;
+		}
+	}
+	function generateMyTimeZoneList(){
+		var outS = "";
+		outS += "<a href = 'javascript:TZSelected(-1)'>Current Location</a><br>"
+		outS += "<a href = 'javascript:addNewTZ()'>+new</a>"
+		document.getElementById("placeList").innerHTML = outS;
+	}
+	function TZSelected(a){
+		if(a == -1){
+			i = 0;
+			updateClock(Time[i]);
+		}
+	}
+	function addNewTZ_Aux(){
+		$("#addNew").css("margin-top", "0px");
+	}
+	function addNewTZ(){
+		$("#addNew").fadeIn();
+		setTimeout(addNewTZ_Aux(), 500);
+	}
+	var myTimeZones = [];
+	function addTimeZone(){
+		switch(i){
+			case 1:
+				$(".zone1").css("display", "block");
+				document.getElementsByClassName("zone1")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Chicago(-6:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 2:
+				$(".zone2").css("display", "block");
+				document.getElementsByClassName("zone2")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>New York(-5:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 3:
+				$(".zone3").css("display", "block");
+				document.getElementsByClassName("zone3")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Santiago(-4:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 4:
+				$(".zone4").css("display", "block");
+				document.getElementsByClassName("zone4")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Buenos Aires(-3:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 5:
+				$(".zone5").css("display", "block");
+				document.getElementsByClassName("zone5")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Brazil(-2:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 6:
+				$(".zone6").css("display", "block");
+				document.getElementsByClassName("zone6")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Cape Verde(-1:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 7:
+				$(".zone7").css("display", "block");
+				document.getElementsByClassName("zone7")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Accra(0:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 8:
+				$(".zone8").css("display", "block");
+				document.getElementsByClassName("zone8")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Belgrade(+1:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 9:
+				$(".zone9").css("display", "block");
+				document.getElementsByClassName("zone9")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Athens(+2:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 10:
+				$(".zone10").css("display", "block");
+				document.getElementsByClassName("zone10")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Moscow(+3:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 11:
+				$(".zone11").css("display", "block");
+				document.getElementsByClassName("zone11")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Dubai(+4:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 12:
+				$(".zone12").css("display", "block");
+				document.getElementsByClassName("zone12")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Karachi(+5:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 13:
+				$(".zone13").css("display", "block");
+				document.getElementsByClassName("zone13")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Almaty(+6:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 14:
+				$(".zone14").css("display", "block");
+				document.getElementsByClassName("zone14")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Jakarta(+7:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 15:
+				$(".zone15").css("display", "block");
+				document.getElementsByClassName("zone15")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Beijing(+8:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 16:
+				$(".zone16").css("display", "block");
+				document.getElementsByClassName("zone16")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Seoul(+9:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 17:
+				$(".zone17").css("display", "block");
+				document.getElementsByClassName("zone17")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Canberra(+10:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 18:
+				$(".zone18").css("display", "block");
+				document.getElementsByClassName("zone18")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Noumea(+11:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 19:
+				$(".zone19").css("display", "block");
+				document.getElementsByClassName("zone19")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Auckland(+/-12:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 20:
+				$(".zone20").css("display", "block");
+				document.getElementsByClassName("zone20")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>American Samoa(-11:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 21:
+				$(".zone21").css("display", "block");
+				document.getElementsByClassName("zone21")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Hawaii(-10:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 22:
+				$(".zone22").css("display", "block");
+				document.getElementsByClassName("zone22")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Gambier Islands(-9:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 23:
+				$(".zone23").css("display", "block");
+				document.getElementsByClassName("zone23")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>California(-8:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 24:
+				$(".zone24").css("display", "block");
+				document.getElementsByClassName("zone24")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Phoenix(-7:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+		}
+	}
+	
+</script>
+</head>
+
+<body onload = "startUp()">
+	<div id = "clockWrapper">
+		<div class = "nums" id = "n1">-</div>
+		<div class = "nums" id = "n2">-</div>
+		<div class = "nums" id = "n3">=</div>
+		<div class = "nums" id = "n4">-</div>
+		<div class = "nums" id = "n5">-</div>
+		<div class = "nums" id = "n6">=</div>
+		<div class = "nums" id = "n7">-</div>
+		<div class = "nums" id = "n8">-</div>
+		<div class = "nums" id = "n9">=</div>
+		<div class = "nums" id = "n10">-</div>
+		<div class = "nums" id = "n11">-</div>
+		<div class = "nums" id = "n12">=</div>
+		
+		<div id = "needle" class = "hour"><span></span></div>
+		<div id = "needle" class = "min"><span></span></div>
+		<div id = "needle" class = "secs"><span></span></div>
+		
+	</div>
+	<div id = "newClock"></div>
+	
+	<div id = "placeList"></div>
+    <div>
+    	<form>
+        	<span>Background Color: </span>
+        	<input type="radio" name="backgroung_color" value="white" checked> white
+  			<input type="radio" name="backgroung_color" value="yellow"> yellow
+            <input type="radio" name="backgroung_color" value="green"> green
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" name="change" value="change" onClick="ChangeBackgroundColor()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="backgroung_color" value="pink"> pink
+            <input type="radio" name="backgroung_color" value="orange"> orange
+            <input type="radio" name="backgroung_color" value="grey"> grey
+            
+        </form>
+       
+    </div>
+	
+	<div id = "addNew">
+		<select id = "timeZone" onchange = "changeTime()">
+			<option value = "-11:00"> American Samoa(-11:00)</option>
+			<option value = "-10:00"> Hawaii(-10:00)</option>
+			<option value = "-9:00"> Gambier Islands(-9:00)</option>
+			<option value = "-8:00"> California(-8:00)</option>
+			<option value = "-7:00" selected> Phoenix(-7:00)</option>
+			<option value = "-6:00"> Chicago(-6:00)</option>
+			<option value = "-5:00"> New York(-5:00)</option>
+			<option value = "-4:00"> Santiago(-4:00)</option>
+			<option value = "-3:00"> Buenos Aires(-3:00)</option>
+			<option value = "-2:00"> Brazil(-2:00)</option>
+			<option value = "-1:00"> Cape Verde(-1:00)</option>
+			<option value = "0:00"> Accra(0:00)</option>
+			<option value = "+1:00"> Belgrade(+1:00)</option>
+			<option value = "+2:00"> Athens(+2:00)</option>
+			<option value = "+3:00"> Moscow(+3:00)</option>
+			<option value = "+4:00"> Dubai(+4:00)</option>
+			<option value = "+5:00"> Karachi(+5:00)</option>
+			<option value = "+6:00"> Almaty(+6:00)</option>
+			<option value = "+7:00"> Jakarta(+7:00)</option>
+			<option value = "+8:00"> Beijing(+8:00)</option>
+			<option value = "+9:00"> Seoul(+9:00)</option>
+			<option value = "+10:00"> Canberra(+10:00)</option>
+			<option value = "+11:00"> Noumea(+11:00)</option>
+			<option value = "+12:00"> Auckland(+/-12:00)</option>
+			
+		</select> 
+		<a href = "javascript:addTimeZone()">Add</a>
+		<a href = "javascript:cancelTimeZone()">Cancel</a>
+        
+	</div>
+	
+</body>
+</html>
