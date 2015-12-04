@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Freelancer - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/animate.css">
+    <!-- Custom CSS -->
+    <link href="css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+	.nav1{
+		position: fixed;
+		display: block;
+		bottom: 10px;
+	}
+	#container1{
+		width : 100%;
+		height : 530px;
+	}
+	.slide{
+		width : 95%;
+		height : 100%;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		background-color: white;
+		background-size : contain;
+		position: absolute;
+	}
+	#slide1{
+		background-image: url("img/img4.jpg");
+	}
+	#slide2{
+		background-image: url("img/img2.jpg");
+	}
+	#slide3{
+		background-image: url("img/img3.jpg");
+	}
+	#slide4{
+		background-image: url("img/img1.jpg");
+	}
+	.button{
+		height:60px;
+		width:150px;
+		display:block;
+		border:solid 2px black;
+		text-align:center;
+		text-decoration:none;
+		margin-bottom:10px;
+		
+		line-height : 60px;	
+		font-size : 18px;
+		<!--color : black;		-->
+	}
+	#topImg{
+		height: 60px;
+		padding-top: 20px;
+	}
+	#ios, #android{
+		height: 80px;
+		margin-top: 15px;
+	}
+	select{
+		width: 300px;
+		height: 45px;
+		font-size: 22px;
+	}
+	#imagePreview{
+		width: 252px;
+		height: 367px;
+		display: block;
+		text-align: center;
+		margin-left: 300px;
+	}
+	#imagePreview1{
+		width: 252px;
+		height: 367px;
+		display: block;
+		text-align: center;
+		margin-left: 300px;
+	}
+	#img_ios{
+		width: 148px;
+		height: 32px;
+		margin-right: -4px;
+	}
+	#img_android{
+		width: 149px;
+		height: 32px;
+		margin-left: -4px;
+		border: 0px;
+	}
+	.displayImage{
+		width : 100%;
+		text-align: center;
+	}
+	#addNew{
+		display: none;
+		position: fixed;
+		top: 0px;
+		margin-top: 1000px;
+		height: 100%;
+		width: 100%;
+		background: rgba(0,0,0,0.7);
+		transition: 1s;
+		
+	}
+	#clockWrapper{
+		width: 300px;
+		margin: auto;
+		margin-bottom: 5px;
+		height: 300px;
+		border: 1px solid black;
+		border-radius: 150px;
+		background-color: white;
+		transition: 3s;
+	}
+	.nums{
+		position: absolute;
+		margin-top: 140px;
+		width: 290px;
+		text-align: right;
+		
+	}
+	.nums1{
+		position: absolute;
+		margin-top: 140px;
+		width: 290px;
+		text-align: right;
+	}
+	#n1{
+		transform: rotate(-60deg);
+	}
+	#n2{
+		transform: rotate(-30deg);
+	}
+	#n3{
+		transform: rotate(0deg);
+	}
+	#n4{
+		transform: rotate(30deg);
+	}
+	#n5{
+		transform: rotate(60deg);
+	}
+	#n6{
+		transform: rotate(90deg);
+	}
+	#n7{
+		transform: rotate(120deg);
+	}
+	#n8{
+		transform: rotate(150deg);
+	}
+	#n9{
+		transform: rotate(180deg);
+	}
+	#n10{
+		transform: rotate(-150deg);
+	}
+	#n11{
+		transform: rotate(-120deg);
+	}
+	#n12{
+		transform: rotate(-90deg);
+	}
+	#needle
+	{
+		margin-top: 150px;
+		position: absolute;
+		width: 300px;
+		line-height: 0px;
+		
+	}
+	#needle span{
+		display: block;
+		margin-left: 150px;
+		width: auto;
+		text-align: left;
+	}
+	.hour span{
+		background-color: red;
+		max-width: 100px;
+		height: 2px;
+	}
+	.min span{
+		background-color: blue;
+		max-width: 120px;
+		height: 2px;
+	}
+	.secs span{
+		background-color: purple;
+		max-width: 135px;
+		height: 1px;
+	}
+	.zone1, .zone2, .zone3, .zone4, .zone5, .zone6, .zone7, .zone8, .zone9, .zone10, .zone11, .zone12, .zone13, .zone14, .zone15, .zone16, .zone17, .zone18, .zone19, .zone20, .zone21, .zone22, .zone23, .zone24{
+		display: none;
+	}
+	</style>
+	<script src="js/wow.min.js"></script>
+	<script>new WOW().init();</script>
+	<script src = "js/9_9.js" type = "text/javascript"></script>
+<script src = "js/jquery-1.11.3.js" type = "text/javascript"></script>
+<script src = "js/jquery.easing.1.3.js" type = "text/javascript"></script>
+	<script>
+	var currentSlide = 1;
+	var status = "ios";
+	var Time = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "23", "22", "21", "20"];
+	
+	var startUp = function(){
+		$(".slide").fadeOut(0);
+		$("#slide1").fadeIn(0);
+		currentSlide = 1;
+		if(status == "ios"){
+			document.getElementById('ios').style.display = "block";
+			document.getElementById('android').style.display = "none";
+			document.getElementById('imagePreview').style.display = "block";
+			document.getElementById('imagePreview1').style.display = "none";
+			
+		}
+		generateClock();
+		generateMyTimeZoneList();
+		setInterval("updateClock()", 1000);
+	}
+	/*
+	var animation = "fade";
+	var startUp = function(slideIni, type){
+		animation = type || "fade";
+		$(".slide").fadeOut(0);
+		$("#slide1" + slideIni).fadeIn(0);
+		currentSlide = 1;
+	}*/
+	var goNext = function(){
+		var next = currentSlide+1;
+		if(next > 4){
+			next = 1;
+		}
+		var bw = $("body").width() + "px";
+		//if(animation === "fade"){
+			//$("#slide"+currentSlide).stop().fadeOut();
+			//$("#slide"+next).stop().fadeIn("slow");
+		//}
+		//else{
+			$("#slide"+currentSlide).stop().animate({"margin-left": "-" + bw}, "slow").fadeOut(0);
+			$("#slide"+next).stop().animate({"margin-left" : bw}, 0).fadeIn(0).animate({"margin-left" : '0px'}, "slow");
+
+		//}
+		currentSlide = next;
+	}
+	var goPrey = function(){
+		var prey = currentSlide-1;
+		if(prey < 1){
+			prey = 4;
+		}
+		var bw1 = $("body").width() + "px";
+
+		//if(animation === "fade"){
+		//	$("#slide"+currentSlide).stop().fadeOut();
+		//	$("#slide"+prey).stop().fadeIn("slow");
+
+		//}else{
+			$("#slide"+currentSlide).stop().animate({"margin-left": bw1}, "slow").fadeOut(0);
+			$("#slide"+prey).stop().animate({"margin-left" : "-" + bw1}, 0).fadeIn(0).animate({"margin-left" : '0px'}, "slow");
+		
+		//}
+		currentSlide = prey;
+	}
+	function changeImage() {
+		var image = document.getElementById('img_ios');
+		var image1 = document.getElementById('img_android');
+		if (image.src.match("img_ios")) {
+			status = "ios";
+			document.getElementById('ios').style.display = "block";
+			document.getElementById('android').style.display = "none";
+			document.getElementById('imagePreview').style.display = "block";
+			document.getElementById('imagePreview1').style.display = "none";
+			//console.log(status);
+		} else {
+			image.src = "ios_on.png";
+			image1.src = "android_off.png";
+			status = "ios";
+			document.getElementById('ios').style.display = "block";
+			document.getElementById('android').style.display = "none";
+			document.getElementById('imagePreview').style.display = "block";
+			document.getElementById('imagePreview1').style.display = "none";
+			//console.log(status);
+		}
+	}
+	function changeImage1() {
+		var image = document.getElementById('img_android');
+		var image1 = document.getElementById('img_ios');
+		if (image.src.match("android_on")) {
+			status = "android";
+			document.getElementById('ios').style.display = "none";
+			document.getElementById('android').style.display = "block";
+			document.getElementById('imagePreview').style.display = "none";
+			document.getElementById('imagePreview1').style.display = "block";
+			//console.log(status);
+		} else {
+			image.src = "android_on.png";
+			image1.src = "ios_off.png";
+			status = "android";
+			document.getElementById('ios').style.display = "none";
+			document.getElementById('android').style.display = "block";
+			document.getElementById('imagePreview').style.display = "none";
+			document.getElementById('imagePreview1').style.display = "block";
+			//console.log(status);
+		}
+	}
+
+	function imageUploaded(a,b)
+	{
+		var file = $('#uploadImage').get(0);
+		if(file.files[0].type.split("/")[0].toLowerCase() != "image"){
+			alert("Incorrect file type -- Please ensure you are uploading an image file.");
+		}
+		if ( file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
+			var FR = new FileReader();
+			FR.onload = function(e) {
+				var data = e.target.result;
+				var canvas = document.createElement("canvas");
+				var img = document.createElement("img");
+				img.onload= function(){
+					var MAX_WIDTH = a;
+					var MAX_HEIGHT = b;
+					var width = img.width;
+					var height = img.height;
+					var w2 = width;
+					var h2 = height;
+
+					if (width > height) {
+						if (width > MAX_WIDTH) {
+							h2 = height * MAX_WIDTH / width;
+							w2 = MAX_WIDTH;
+						}
+					} 
+					else 
+					{
+						if (height > MAX_HEIGHT) {
+							w2 = width * MAX_HEIGHT / height;
+							h2 = MAX_HEIGHT;
+						}
+					}
+					canvas.width = w2;
+					canvas.height = h2;
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(img, 0, 0, w2, h2);
+					var base64St = canvas.toDataURL("image/png");
+					document.getElementById("imagePreview").src = base64St;
+					document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
+					document.getElementById("imagePreview").style.width= MAX_WIDTH + "px";
+				}
+				img.src = data;
+			};  
+			FR.readAsDataURL( file.files[0] );
+		}
+	}
+	function imageUploaded1(a,b)
+	{
+		var file = $('#uploadImage1').get(0);
+		if(file.files[0].type.split("/")[0].toLowerCase() != "image"){
+			alert("Incorrect file type -- Please ensure you are uploading an image file.");
+		}
+		if ( file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
+			var FR = new FileReader();
+			FR.onload = function(e) {
+				var data = e.target.result;
+				var canvas = document.createElement("canvas");
+				var img = document.createElement("img");
+				img.onload= function(){
+					var MAX_WIDTH = a;
+					var MAX_HEIGHT = b;
+					var width = img.width;
+					var height = img.height;
+					var w2 = width;
+					var h2 = height;
+
+					if (width > height) {
+						if (width > MAX_WIDTH) {
+							h2 = height * MAX_WIDTH / width;
+							w2 = MAX_WIDTH;
+						}
+					} 
+					else 
+					{
+						if (height > MAX_HEIGHT) {
+							w2 = width * MAX_HEIGHT / height;
+							h2 = MAX_HEIGHT;
+						}
+					}
+					canvas.width = w2;
+					canvas.height = h2;
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(img, 0, 0, w2, h2);
+					var base64St = canvas.toDataURL("image/png");
+					document.getElementById("imagePreview1").src = base64St;
+					document.getElementById("imagePreview1").style.height = MAX_HEIGHT + "px";
+					document.getElementById("imagePreview1").style.width= MAX_WIDTH + "px";
+				}
+				img.src = data;
+			};  
+			FR.readAsDataURL( file.files[0] );
+		}
+	}
+	function changeImg()
+	{
+		var x = document.getElementById("mySelect").value;
+		switch (x){
+			case "Icon":
+				imageUploaded(57,57);
+				break;
+			case "Icon2x":
+				imageUploaded(114,114);
+				break;
+			case "Icon_72":
+				imageUploaded(72,72);
+				break;
+			case "Icon_722x":
+				imageUploaded(144,144);
+				break;
+			case "Icon_small":
+				imageUploaded(29,29);
+				break;
+			case "Icon_small2x":
+				imageUploaded(58,58);
+				break;
+			case "Icon_small_50":
+				imageUploaded(50,50);
+				break;
+			case "Icon_small_502x":
+				imageUploaded(100,100);
+				break;
+		}
+	}
+	function changeImg1()
+	{
+		var x = document.getElementById("mySelect1").value;
+		switch (x){
+			case "Launcher_icons_48":
+				imageUploaded1(48,48);
+				break;
+			case "Launcher_icons_72":
+				imageUploaded1(72,72);
+				break;
+			case "Launcher_icons_96":
+				imageUploaded1(96,96);
+				break;
+			case "Launcher_icons_144":
+				imageUploaded1(144,144);
+				break;
+			case "Launcher_icons_192":
+				imageUploaded1(192,192);
+				break;
+			case "Launcher_icons_512":
+				imageUploaded1(512,512);
+				break;
+		}
+	}
+	function delateClock1(){
+		$(".zone1").css("display", "none");
+	}
+	function delateClock2(){
+		$(".zone2").css("display", "none");
+	}
+	function delateClock3(){
+		$(".zone3").css("display", "none");
+	}
+	function delateClock4(){
+		$(".zone4").css("display", "none");
+	}
+	function delateClock5(){
+		$(".zone5").css("display", "none");
+	}
+	function delateClock6(){
+		$(".zone6").css("display", "none");
+	}
+	function delateClock7(){
+		$(".zone7").css("display", "none");
+	}
+	function delateClock8(){
+		$(".zone8").css("display", "none");
+	}
+	function delateClock9(){
+		$(".zone9").css("display", "none");
+	}
+	function delateClock10(){
+		$(".zone10").css("display", "none");
+	}
+	function delateClock11(){
+		$(".zone11").css("display", "none");
+	}
+	function delateClock12(){
+		$(".zone12").css("display", "none");
+	}
+	function delateClock13(){
+		$(".zone13").css("display", "none");
+	}
+	function delateClock14(){
+		$(".zone14").css("display", "none");
+	}
+	function delateClock15(){
+		$(".zone15").css("display", "none");
+	}
+	function delateClock16(){
+		$(".zone16").css("display", "none");
+	}
+	function delateClock17(){
+		$(".zone17").css("display", "none");
+	}
+	function delateClock18(){
+		$(".zone18").css("display", "none");
+	}
+	function delateClock19(){
+		$(".zone19").css("display", "none");
+	}
+	function delateClock20(){
+		$(".zone20").css("display", "none");
+	}
+	function delateClock21(){
+		$(".zone21").css("display", "none");
+	}
+	function delateClock22(){
+		$(".zone22").css("display", "none");
+	}
+	function delateClock23(){
+		$(".zone23").css("display", "none");
+	}
+	function delateClock24(){
+		$(".zone24").css("display", "none");
+	}
+	function generateClock(){
+		var clock = "";
+		for(var b = 1; b < 25; b++){
+			var a = 30 *b;
+			clock += "<div id = 'clockWrapper' class = 'zone"+b+"'>"
+			+"<div class = 'nums1' id = 'n1'>-</div>"
+			+"<div class = 'nums1' id = 'n2'>-</div>"
+			+"<div class = 'nums1' id = 'n3'>=</div>"
+			+"<div class = 'nums1' id = 'n4'>-</div>"
+			+"<div class = 'nums1' id = 'n5'>-</div>"
+			+"<div class = 'nums1' id = 'n6'>=</div>"
+			+"<div class = 'nums1' id = 'n7'>-</div>"
+			+"<div class = 'nums1' id = 'n8'>-</div>"
+			+"<div class = 'nums1' id = 'n9'>=</div>"
+			+"<div class = 'nums1' id = 'n10'>-</div>"
+			+"<div class = 'nums1' id = 'n11'>-</div>"
+			+"<div class = 'nums1' id = 'n12'>=</div>"
+		
+			+"<div id = 'needle' class = 'hour'><span></span></div>"
+			+"<div id = 'needle' class = 'min'><span></span></div>"
+			+"<div id = 'needle' class = 'secs'><span></span></div>"
+			+"<div><button style = 'margin-left: 300px;margin-top: 50px;' onclick = 'javascript:delateClock"+b+"()'>Delate</button></div>"
+			+"</div>";
+		}
+		
+		document.getElementById("newClock").innerHTML = clock;
+	
+	}
+	function ChangeBackgroundColor(){
+		var a = document.getElementsByName("backgroung_color");
+		for(var c = 0; c < a.length; c++){
+			if(a[c].checked == true){
+				console.log(a[c].value);
+				$("#clockWrapper").css("background-color", a[c].value);
+				break;	
+			}
+		}
+		
+	}
+	var i = 0;
+	
+	function cancelTimeZone(){
+		$("#addNew").css("margin-top", "1000px");
+		$("#addNew").fadeOut();
+	}
+	function updateClock(){
+		var date = new Date();
+		var h = date.getHours()% 12;
+		var m = date.getMinutes();
+		var s = date.getSeconds();
+		
+		var hdeg = (h -3) * 30 + 30 * i ;
+		
+		var mdeg = (m -15) * 6;
+		console.log(mdeg);
+		var sdeg = (s -15) * 6;
+		var h = document.getElementsByClassName("hour");
+		var m = document.getElementsByClassName("min");
+		var s = document.getElementsByClassName("secs");
+		//h[0].style.transform = "rotate(" + hdeg + "deg)";
+		//m[0].style.transform = "rotate(" + mdeg + "deg)";
+		//s[0].style.transform = "rotate(" + sdeg + "deg)";
+		for(var j = 0; j < h.length; j ++){
+			var d = 30 * j + hdeg;
+			h[j].style.transform = "rotate(" + d + "deg)";
+			m[j].style.transform = "rotate(" + mdeg + "deg)";
+			s[j].style.transform = "rotate(" + sdeg + "deg)";
+		}
+		
+	}
+	function changeTime(){
+		var x = document.getElementById("timeZone").value;
+		switch (x){
+			case "-7:00":
+				i = 0;
+				updateClock();
+				break;
+			case "-6:00":
+				i = 1;
+				updateClock();
+				break;
+			case "-5:00":
+				i = 2;
+				updateClock();
+				break;
+			case "-4:00":
+				i = 3;
+				updateClock();
+				break;
+			case "-3:00":
+				i = 4;
+				updateClock();
+				break;
+			case "-2:00":
+				i = 5;
+				updateClock();
+				break;
+			case "-1:00":
+				i = 6;
+				updateClock();
+				break;
+			case "0:00":
+				i = 7;
+				updateClock();
+				break;
+			case "+1:00":
+				i = 8;
+				updateClock();
+				break;
+			case "+2:00":
+				i = 9;
+				updateClock();
+				break;
+			case "+3:00":
+				i = 10;
+				updateClock();
+				break;
+			case "+4:00":
+				i = 11;
+				updateClock();
+				break;
+			case "+5:00":
+				i = 12;
+				updateClock();
+				break;
+			case "+6:00":
+				i = 13;
+				updateClock();
+				break;
+			case "+7:00":
+				i = 14;
+				updateClock();
+				break;
+			case "+8:00":
+				i = 15;
+				updateClock();
+				break;
+			case "+9:00":
+				i = 16;
+				updateClock();
+				break;
+			case "+10:00":
+				i = 17;
+				updateClock();
+				break;
+			case "+11:00":
+				i = 18;
+				updateClock();
+				break;
+			case "+12:00":
+				i = 19;
+				updateClock();
+				break;
+			case "-8:00":
+				i = 23;
+				updateClock();
+				break;
+			case "-9:00":
+				i = 22;
+				updateClock();
+				break;
+			case "-10:00":
+				i = 21;
+				updateClock();
+				break;
+			case "-11:00":
+				i = 20;
+				updateClock();
+				break;
+		}
+	}
+	function generateMyTimeZoneList(){
+		var outS = "";
+		outS += "<a href = 'javascript:TZSelected(-1)'>Current Location</a><br>"
+		outS += "<a href = 'javascript:addNewTZ()'>+new</a>"
+		document.getElementById("placeList").innerHTML = outS;
+	}
+	function TZSelected(a){
+		if(a == -1){
+			i = 0;
+			updateClock(Time[i]);
+		}
+	}
+	function addNewTZ_Aux(){
+		$("#addNew").css("margin-top", "0px");
+	}
+	function addNewTZ(){
+		$("#addNew").fadeIn();
+		setTimeout(addNewTZ_Aux(), 500);
+	}
+	var myTimeZones = [];
+	function addTimeZone(){
+		switch(i){
+			case 1:
+				$(".zone1").css("display", "block");
+				document.getElementsByClassName("zone1")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Chicago(-6:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 2:
+				$(".zone2").css("display", "block");
+				document.getElementsByClassName("zone2")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>New York(-5:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 3:
+				$(".zone3").css("display", "block");
+				document.getElementsByClassName("zone3")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Santiago(-4:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 4:
+				$(".zone4").css("display", "block");
+				document.getElementsByClassName("zone4")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Buenos Aires(-3:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 5:
+				$(".zone5").css("display", "block");
+				document.getElementsByClassName("zone5")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Brazil(-2:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 6:
+				$(".zone6").css("display", "block");
+				document.getElementsByClassName("zone6")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Cape Verde(-1:00)</div></div>";
+				TZSelected(-1);
+				break;
+			case 7:
+				$(".zone7").css("display", "block");
+				document.getElementsByClassName("zone7")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Accra(0:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 8:
+				$(".zone8").css("display", "block");
+				document.getElementsByClassName("zone8")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Belgrade(+1:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 9:
+				$(".zone9").css("display", "block");
+				document.getElementsByClassName("zone9")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Athens(+2:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 10:
+				$(".zone10").css("display", "block");
+				document.getElementsByClassName("zone10")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Moscow(+3:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 11:
+				$(".zone11").css("display", "block");
+				document.getElementsByClassName("zone11")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Dubai(+4:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 12:
+				$(".zone12").css("display", "block");
+				document.getElementsByClassName("zone12")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Karachi(+5:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 13:
+				$(".zone13").css("display", "block");
+				document.getElementsByClassName("zone13")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Almaty(+6:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 14:
+				$(".zone14").css("display", "block");
+				document.getElementsByClassName("zone14")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Jakarta(+7:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 15:
+				$(".zone15").css("display", "block");
+				document.getElementsByClassName("zone15")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Beijing(+8:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 16:
+				$(".zone16").css("display", "block");
+				document.getElementsByClassName("zone16")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Seoul(+9:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 17:
+				$(".zone17").css("display", "block");
+				document.getElementsByClassName("zone17")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Canberra(+10:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 18:
+				$(".zone18").css("display", "block");
+				document.getElementsByClassName("zone18")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Noumea(+11:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 19:
+				$(".zone19").css("display", "block");
+				document.getElementsByClassName("zone19")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Auckland(+/-12:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 20:
+				$(".zone20").css("display", "block");
+				document.getElementsByClassName("zone20")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>American Samoa(-11:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 21:
+				$(".zone21").css("display", "block");
+				document.getElementsByClassName("zone21")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Hawaii(-10:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 22:
+				$(".zone22").css("display", "block");
+				document.getElementsByClassName("zone22")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Gambier Islands(-9:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 23:
+				$(".zone23").css("display", "block");
+				document.getElementsByClassName("zone23")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>California(-8:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+			case 24:
+				$(".zone24").css("display", "block");
+				document.getElementsByClassName("zone24")[0].innerHTML += "<div><div style ='margin-top: 100px;margin-left: 100px'>Phoenix(-7:00)</div></div>";
+				
+				TZSelected(-1);
+				break;
+		}
+	}
+</script>
+</head>
+
+<body id="page-top" class="index" onload = "startUp()">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Yutong Wu</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Portfolio</a>
+                    </li>
+					
+					<li class="page-scroll">
+                        <a href="#hometown">Hometown</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+			<div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile1.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Yutong Wu</span>
+                        <hr class="star-light">
+                        <span class="skills">Digital Culture - AME220<br>
+						<a style = "color:pink"  href = "https://github.com/748015579/AME220.git">Fork me on GitHub</a>
+						</span>
+						
+                    </div>
+                </div>
+			</div>
+        </div>
+    </header>
+	
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Portfolio</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/work1.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/work2.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/work3.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/work4.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/work5.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/work6.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	
+	
+    <!-- Hometown Section -->
+	<section id="hometown" class = "success">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Hometown</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+					<a href="#" class="portfolio-link" data-toggle="modal">
+						<div class="caption">
+                            <div class="caption-content">
+                                Chinese Food
+                            </div>
+                        </div>
+                        <div class = "wow rubberBand"><img src="img/hometown/food.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                Forbidden City
+                            </div>
+                        </div>
+                        <div class = "wow bounceOut"><img src="img/hometown/forbiddenCity.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                Chinese Character
+                            </div>
+                        </div>
+                        <div class = "wow flipInY"><img src="img/hometown/chineseCharacter.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                Cheongsam
+                            </div>
+                        </div>
+                        <div class = "wow zoomInDown"><img src="img/hometown/cheongsam.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                Tai Chi
+                            </div>
+                        </div>
+                        <div class = "wow swing"><img src="img/hometown/taiChi.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                Great Wall
+                            </div>
+                        </div>
+                        <div class = "wow fadeInRight"><img src="img/hometown/greatwall.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                Panda
+                            </div>
+                        </div>
+                        <div class = "wow flipOutX"><img src="img/hometown/panda.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                Paper Cutting
+                            </div>
+                        </div>
+                        <div class = "wow pulse"><img src="img/hometown/paperCutting.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                Chinese Lute
+                            </div>
+                        </div>
+                        <div class = "wow wobble"><img src="img/hometown/lute.png" class="img-responsive" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	
+	<!-- About Section -->
+    <section  id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>I am Yutong Wu, an exchange student from China, majoring Digital Culture. I'm glad to have this chance coming here and add this class. As for my hobbies, I enjoy tasting</p>
+                </div>
+                <div class="col-lg-4">
+                    <p>delicious food, especially Chinese food. I showed some symbols of my hometown above. As well as, I enjoy tranvelling, in which I can throw myself into nature and feel relaxed. </p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2>Me</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class = "success">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Contact Me</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Name        Yutong" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="Email Address        yutongw4@asu.edu" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="Phone Number        4802956338" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Message</label>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class=" btn-success btn-lg">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Freelancer</h3>
+                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Your Website 2014
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visible-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+						<h2>Slide Animate</h2>
+							<div id = "container1">
+							<div class = "slide" id = "slide1"></div>
+							<div class = "slide" id = "slide2"></div>
+							<div class = "slide" id = "slide3"></div>
+							<div class = "slide" id = "slide4"></div>
+
+							</div>
+							<a style = "left : 10px" class = "nav1" href = "javascript: goPrey()">Prey</a>
+							<a style = "right : 10px" class = "nav1" href = "javascript: goNext()">Next</a>
+							<!--
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul> 
+							-->
+							
+                            
+                        
+						<!--
+						<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+						-->
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+						
+                            <h2>Easing Animation</h2>
+							<!--
+                            <hr class="star-primary">
+                            <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        -->
+						<a href = 'javascript:buttonClicked(0)' class = 'button' id = 'button0'>
+	swing
+	</a>
+	<a href = 'javascript:buttonClicked(1)' class = 'button' id = 'button1'>
+	easeInQuad
+	</a>
+	<a href = 'javascript:buttonClicked(2)' class = 'button' id = 'button2'>
+	easeOutQuad
+	</a>
+	<a href = 'javascript:buttonClicked(3)' class = 'button' id = 'button3'>
+	easeInOutQuad
+	</a>
+	<a href = 'javascript:buttonClicked(4)' class = 'button' id = 'button4'>
+	easeInCubic
+	</a>
+	<a href = 'javascript:buttonClicked(5)' class = 'button' id = 'button5'>
+	easeOutCubic
+	</a>
+	<a href = 'javascript:buttonClicked(6)' class = 'button' id = 'button6'>
+	easeInOutCubic
+	</a>
+	<a href = 'javascript:buttonClicked(7)' class = 'button' id = 'button7'>
+	easeInQuart
+	</a>
+	<a href = 'javascript:buttonClicked(8)' class = 'button' id = 'button8'>
+	easeOutQuart
+	</a>
+	<a href = 'javascript:buttonClicked(9)' class = 'button' id = 'button9'>
+	easeInOutQuart
+	</a>
+	<a href = 'javascript:buttonClicked(10)' class = 'button' id = 'button10'>
+	easeInQuint
+	</a>
+	<a href = 'javascript:buttonClicked(11)' class = 'button' id = 'button11'>
+	easeOutQuint
+	</a>
+	<a href = 'javascript:buttonClicked(12)' class = 'button' id = 'button12'>
+	easeInOutQuint
+	</a>
+	<a href = 'javascript:buttonClicked(13)' class = 'button' id = 'button13'>
+	easeInSine
+	</a>
+	<a href = 'javascript:buttonClicked(14)' class = 'button' id = 'button14'>
+	easeOutSine
+	</a>
+	<a href = 'javascript:buttonClicked(15)' class = 'button' id = 'button15'>
+	easeInOutSine
+	</a>
+	<a href = 'javascript:buttonClicked(16)' class = 'button' id = 'button16'>
+	easeInExpo
+	</a>
+	<a href = 'javascript:buttonClicked(17)' class = 'button' id = 'button17'>
+	easeOutExpo
+	</a>
+	<a href = 'javascript:buttonClicked(18)' class = 'button' id = 'button18'>
+	easeInOutExpo
+	</a>
+	<a href = 'javascript:buttonClicked(19)' class = 'button' id = 'button19'>
+	easeInCirc
+	</a>
+	<a href = 'javascript:buttonClicked(20)' class = 'button' id = 'button20'>
+	easeOutCirc
+	</a>
+	<a href = 'javascript:buttonClicked(21)' class = 'button' id = 'button21'>
+	easeInOutCirc
+	</a>
+	<a href = 'javascript:buttonClicked(22)' class = 'button' id = 'button22'>
+	easeInElastic
+	</a>
+	<a href = 'javascript:buttonClicked(23)' class = 'button' id = 'button23'>
+	easeOutElastic
+	</a>
+	<a href = 'javascript:buttonClicked(24)' class = 'button' id = 'button24'>
+	easeInOutElastic
+	</a>
+	<a href = 'javascript:buttonClicked(25)' class = 'button' id = 'button25'>
+	easeInBack
+	</a>
+	<a href = 'javascript:buttonClicked(26)' class = 'button' id = 'button26'>
+	easeOutBack
+	</a>
+	<a href = 'javascript:buttonClicked(27)' class = 'button' id = 'button27'>
+	easeInOutBack
+	</a>
+	<a href = 'javascript:buttonClicked(28)' class = 'button' id = 'button28'>
+	easeInBounce
+	</a>
+	<a href = 'javascript:buttonClicked(29)' class = 'button' id = 'button29'>
+	easeOutBounce
+	</a>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Icons Modified</h2>
+							<div id = "topImg">
+		<img id = "img_ios" src = "ios_on.png" onclick = "changeImage()">
+		<img id = "img_android" src = "android_off.png" onclick = "changeImage1()">
+	</div>
+	<div id = "ios">
+		<select id = "mySelect" onchange="changeImg()">
+			<option value="Icon">Icon.png</option>
+			<option value="Icon2x">Icon@2x.png</option>
+			<option value="Icon_72" selected = "selected">Icon-72.png</option>
+			<option value="Icon_722x">Icon-72@2x.png</option>
+			<option value="Icon_small">Icon-small.png</option>
+			<option value="Icon_small2x">Icon-small@2x.png</option>
+			<option value="Icon_small_50">Icon-small-50.png</option>
+			<option value="Icon_small_502x">Icon-small-50@2x.png</option>
+		</select>
+		<input type="file" name="uploadImage" id="uploadImage" onchange="imageUploaded(72,72)">
+	</div>
+	<div id = "android">
+		<select id = "mySelect1" onchange = "changeImg1()">
+			<option value="Launcher_icons_48">Launcher_icons-48.png</option>
+			<option value="Launcher_icons_72" selected = "selected">Launcher_icons-72.png</option>
+			<option value="Launcher_icons_96">Launcher_icons-96.png</option>
+			<option value="Launcher_icons_144">Launcher_icons-144.png</option>
+			<option value="Launcher_icons_192">Launcher_icons-192.png</option>
+			<option value="Launcher_icons_512">Launcher_icons-512.png</option>
+		</select>
+		<input type="file" name="uploadImage1" id="uploadImage1" onchange="imageUploaded1(72,72)">
+	</div>
+	<div class = "displayImage">
+		<img id="imagePreview">
+		<img id = "imagePreview1">
+	</div>
+							<!--
+                            <hr class="star-primary">
+                            <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        -->
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Photography</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/work41.png" class="img-responsive img-centered" alt="">
+                            <p>This is the first photo about sunset from I arriving near my apartment. It is so wonderful. I like it best.</p>
+                            <ul class="list-inline item-details">
+                                <li>Date:
+                                    <strong>August 2015
+                                    </strong>
+                                </li>
+                                <li>Location:
+                                    <strong>Tempe
+                                    </strong>
+                                </li>
+                            </ul>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Canvas Demo</h2>
+							<!--
+                            <hr class="star-primary">
+                            <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        -->
+						<strong><a href="Canvas Demo.html">Show Canvas</a>
+                                    </strong>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Time Zone</h2>
+							<div id = "clockWrapper">
+		<div class = "nums" id = "n1">-</div>
+		<div class = "nums" id = "n2">-</div>
+		<div class = "nums" id = "n3">=</div>
+		<div class = "nums" id = "n4">-</div>
+		<div class = "nums" id = "n5">-</div>
+		<div class = "nums" id = "n6">=</div>
+		<div class = "nums" id = "n7">-</div>
+		<div class = "nums" id = "n8">-</div>
+		<div class = "nums" id = "n9">=</div>
+		<div class = "nums" id = "n10">-</div>
+		<div class = "nums" id = "n11">-</div>
+		<div class = "nums" id = "n12">=</div>
+		
+		<div id = "needle" class = "hour"><span></span></div>
+		<div id = "needle" class = "min"><span></span></div>
+		<div id = "needle" class = "secs"><span></span></div>
+		
+	</div>
+	<div id = "newClock"></div>
+	
+	<div id = "placeList"></div>
+    <div>
+    	<form>
+        	<span>Background Color: </span>
+        	<input type="radio" name="backgroung_color" value="white" checked> white
+  			<input type="radio" name="backgroung_color" value="yellow"> yellow
+            <input type="radio" name="backgroung_color" value="green"> green
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" name="change" value="change" onClick="ChangeBackgroundColor()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="backgroung_color" value="pink"> pink
+            <input type="radio" name="backgroung_color" value="orange"> orange
+            <input type="radio" name="backgroung_color" value="grey"> grey
+            
+        </form>
+       
+    </div>
+	
+	<div id = "addNew">
+		<select id = "timeZone" onchange = "changeTime()">
+			<option value = "-11:00"> American Samoa(-11:00)</option>
+			<option value = "-10:00"> Hawaii(-10:00)</option>
+			<option value = "-9:00"> Gambier Islands(-9:00)</option>
+			<option value = "-8:00"> California(-8:00)</option>
+			<option value = "-7:00" selected> Phoenix(-7:00)</option>
+			<option value = "-6:00"> Chicago(-6:00)</option>
+			<option value = "-5:00"> New York(-5:00)</option>
+			<option value = "-4:00"> Santiago(-4:00)</option>
+			<option value = "-3:00"> Buenos Aires(-3:00)</option>
+			<option value = "-2:00"> Brazil(-2:00)</option>
+			<option value = "-1:00"> Cape Verde(-1:00)</option>
+			<option value = "0:00"> Accra(0:00)</option>
+			<option value = "+1:00"> Belgrade(+1:00)</option>
+			<option value = "+2:00"> Athens(+2:00)</option>
+			<option value = "+3:00"> Moscow(+3:00)</option>
+			<option value = "+4:00"> Dubai(+4:00)</option>
+			<option value = "+5:00"> Karachi(+5:00)</option>
+			<option value = "+6:00"> Almaty(+6:00)</option>
+			<option value = "+7:00"> Jakarta(+7:00)</option>
+			<option value = "+8:00"> Beijing(+8:00)</option>
+			<option value = "+9:00"> Seoul(+9:00)</option>
+			<option value = "+10:00"> Canberra(+10:00)</option>
+			<option value = "+11:00"> Noumea(+11:00)</option>
+			<option value = "+12:00"> Auckland(+/-12:00)</option>
+			
+		</select> 
+		<a href = "javascript:addTimeZone()">Add</a>
+		<a href = "javascript:cancelTimeZone()">Cancel</a>
+        
+	</div>
+						<!--	
+                            <hr class="star-primary">
+                            <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+						-->
+					   </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/freelancer.js"></script>
+
+</body>
+
+</html>
